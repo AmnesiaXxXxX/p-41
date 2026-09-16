@@ -4,12 +4,14 @@ services:
     container_name: db
     volumes:
       - data:/var/lib/postgresql/data
+      - ./backups/:/backups
+      - ./backup.sh:/backup.sh
     networks:
       default: null
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: mydb
+      POSTGRES_DB: db
   web:
     image: 'dpage/pgadmin4:latest'
     ports:

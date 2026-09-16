@@ -1,9 +1,24 @@
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
+-- Инструкция для запуска всей этой шляпы
+--
+-- 1. docker compose up -d
+--      Дожидаетесь запуска всех сервисов
+--      PGAdmin можно открыть по http://localhost:4500
+--      Логин: postgres@postgres.postgres 
+--      Пароль: postgres
+--      По стандарту пароль и логин берутся из файла .env там поля подписаны
+-- 2. docker compose exec -it db psql -U postgres -d db
+--      Подключение к бд
+--          -U -- Пользователь
+--          -d -- База данных к которой подключаемся
+-- 3. Если всё ок, то вы должны увидеть что то такое
+--          psql (16.15)
+--          Type "help" for help.
+--          db=# 
+--      Сюда уже можно вставлять код ниже
+--      
 
-DROP DATABASE IF EXISTS db;
-CREATE DATABASE db WITH OWNER postgres;
--- подключение к бд
-\c db
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Блок ниже можно выполнять где угодно
 
