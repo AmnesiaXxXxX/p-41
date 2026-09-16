@@ -5,7 +5,8 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
       - ./backups/:/backups
-      - ./backup.sh:/backup.sh
+      - ./code/backup.sh:/backup.sh
+      - ./code/*.sql:/code/
     networks:
       default: null
     environment:

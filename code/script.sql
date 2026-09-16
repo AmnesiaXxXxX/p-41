@@ -104,3 +104,15 @@ SELECT
 		'compress-algo=1, cipher-algo=aes256'
 	) 
 FROM generated_users;
+
+
+-- Дешифровка пароля
+
+/* SELECT 
+	username, 
+	pgp_sym_decrypt(
+		password::bytea, 
+		'SECRET_KEY', 
+		'compress-algo=1, cipher-algo=aes256'
+	) as password
+FROM users; */
