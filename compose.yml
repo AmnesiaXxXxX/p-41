@@ -1,0 +1,29 @@
+services:
+  db:
+    image: 'postgres:16-alpine'
+    container_name: db
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      default: null
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: mydb
+  web:
+    image: 'dpage/pgadmin4:latest'
+    ports:
+      - 4500:80
+    networks:
+      default: null
+    environment:
+      PGADMIN_DEFAULT_EMAIL: '${DB_USERNAME}@${DB_USERNAME}.${DB_USERNAME}'
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  data:
+  pgadmin_data:
+networks:
+  default: null
